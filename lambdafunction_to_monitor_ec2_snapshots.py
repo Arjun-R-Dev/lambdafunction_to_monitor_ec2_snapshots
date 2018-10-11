@@ -38,3 +38,13 @@ def lambda_handler(event, context):
         return (aj,ak)
     out = test()
     print (out)
+    def mail(out):
+        message = json.dumps(out)
+        client = boto3.client('sns')
+        arn = 'arn of your sns topic'
+        response = client.publish(
+        TargetArn=arn,
+        Message=json.dumps({'default': json.dumps(message)}),
+        MessageStructure='json'
+        )
+    mail(out)
