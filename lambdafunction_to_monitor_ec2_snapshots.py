@@ -10,8 +10,7 @@ def lambda_handler(event, context):
     aj=list()
     def test():
         filters = [{'Name': 'tag-key', 'Values': ['CreatedBy']}]
-        #days = 7
-        #now = datetime.now()
+
         ec2 = boto3.client('ec2')
         regions = ec2.describe_regions().get('Regions',[] )
         
